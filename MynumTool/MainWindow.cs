@@ -22,7 +22,7 @@ namespace MynumTool
 
         }
 
-
+        // 計算ボタン
         private void btnCalc_Click(object sender, EventArgs e)
         {
             if (ntxtCalc1.isValidText(4) && ntxtCalc2.isValidText(4) && ntxtCalc3.isValidText(3))
@@ -34,15 +34,14 @@ namespace MynumTool
             }
             else
             {
+                // error
                 statusbar.ForeColor = System.Drawing.Color.Red;
                 statusbar.Text = "個人番号は11桁の数値を入力してください。";
                 txtCalcResult.Text = "";
             }
-
-
         }
 
-
+        // 確認ボタン
         private void btnCheck_Click(object sender, EventArgs e)
         {
             bool isValidNumber = false;
@@ -56,14 +55,14 @@ namespace MynumTool
             }
             else
             {
+                // error
                 statusbar.ForeColor = System.Drawing.Color.Red;
                 statusbar.Text = "個人番号は12桁の数値を入力してください。";
                 txtCalcResult.Text = "";
             }
-
         }
-        
 
+        // Textbox入力時の自動カーソル移動
         // TODO: 以下カスタムコントロールでどうにかしたい
         private void ntxtCalc1_KeyPress(object sender, KeyPressEventArgs e)
         {

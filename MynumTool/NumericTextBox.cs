@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace MynumTool
 {
+    // カスタムコントロール
     public partial class NumericTextBox : TextBox
     {
         public NumericTextBox()
@@ -22,9 +23,11 @@ namespace MynumTool
             base.OnPaint(pe);
         }
 
+        // Textboxに入力制限をかける
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
-            // 入力制限
+            // 半角数字のみ許可を想定
+            // TODO: 判定がかなり雑
             if ((e.KeyChar >= 'A' && e.KeyChar <= 'z') || e.KeyChar == ' ')
             {
                 e.Handled = true;
@@ -32,7 +35,7 @@ namespace MynumTool
             base.OnKeyPress(e);
         }
 
-        // 4桁の数字のみ許可する
+        // 指定桁の数字のみ許可する
         public bool isValidText(int length)
         {
             uint parsedValue = 0;
@@ -42,8 +45,6 @@ namespace MynumTool
             if (base.Text.Length != length) return false;
 
             return true;
-            
         }
-
     }
 }

@@ -11,15 +11,18 @@ namespace MynumTool
     {
         static readonly int[] Q = { 6, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 
+        // 12桁の個人番号の有効/無効を判定
         public static bool IsValid(string duodecupleDigits)
         {
             if (!(new Regex("^[0-9]{12}$")).IsMatch(duodecupleDigits))
                 return false;
 
+            // 1～11桁目から生成したチェックデジットと12桁目が一致するかどうかを判定する
             string checkDigit = CalcCheckDigit(duodecupleDigits.Substring(0, 11));
             return duodecupleDigits[11].ToString() == checkDigit;
         }
 
+        // 個人番号1～11桁目からチェックデジット（12桁目）を算出する
         public static string CalcCheckDigit(string undecupleDigits)
         {
             if(!(new Regex("^[0-9]{11}$")).IsMatch(undecupleDigits))
